@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>category</title>
+  <title>Category</title>
   <link rel="stylesheet" href="{{ asset('style/admin.css') }}" />
 </head>
 
@@ -66,9 +66,6 @@
       <a href="{{ url('category') }}">
         <p class = "active">Category</p>
       </a>
-      <a href="{{ url('admin') }}">
-        <p class="active">Transaction</p>
-      </a>
     </div>
 
     <div class="card">
@@ -77,7 +74,7 @@
         <div class="card-btn">
           <a href="{{ url('category/create') }}"><i class="fa-solid fa-plus fa-lg" style="margin-right: 7px"></i>Category Entry</a>
           <a href=""><i class="fa-solid fa-table fa-lg" style="color: #ffffff; margin-right: 7px"></i>View Tables</a>
-          <a href="{{ url('cetak-transaction') }}" target="_blank"><i class="fa-solid fa-print fa-lg" style="color: #ffffff; margin-right: 7px"></i>Cetak Transaksi</a>
+          <a href="{{ route('category.cetak-pdf') }}" target="_blank"><i class="fa-solid fa-print fa-lg" style="color: #ffffff; margin-right: 7px"></i>Cetak PDF</a>
         </div>
       </div>
 
@@ -111,7 +108,7 @@
                   <form action="{{ route('category.destroy', $categories->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn-delete" onclick="return confirm('Are you sure?')">Hapus</button>
+                    <button type="submit" class="btn-delete" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
                   </form>
                 </td>
               </tr>
@@ -126,7 +123,7 @@
   <script>
     function Delete() {
       Swal.fire({
-        title: "Are you sure?",
+        title: "Apakah anda yakin untuk menghapus data ini?",
         text: "You won't be able to revert this!",
         icon: "warning",
         showCancelButton: true,

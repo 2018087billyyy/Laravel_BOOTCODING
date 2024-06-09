@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,3 +27,4 @@ Route::post('category', [CategoryController::class, 'store'])->name('category.st
 Route::get('category/edit{id}', [CategoryController::class, 'edit'])->name('category.edit'); // Edit Form
 Route::post('category/update{id}', [CategoryController::class, 'update'])->name('category.update'); // Update
 Route::delete('category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
+Route::get('/category/cetak-pdf', [CategoryController::class, 'cetakPDF'])->name('category.cetak-pdf');

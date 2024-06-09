@@ -63,7 +63,7 @@
                         </div>
                         <div class="user-box">
                             <label for="harga">Harga</label>
-                            <input type="number" name="harga" id="harga" value="{{ $category->harga }}" />
+                            <input type="text" name="harga" id="harga" value="{{ $category->harga }}" />
                         </div>
                         <button name="simpan" type="submit">Kirim</button>
                     </form>

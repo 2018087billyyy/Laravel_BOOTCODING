@@ -17,7 +17,7 @@ class CreateCategoryTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('course');
-            $table->decimal('harga', 8, 2);
+            $table->string('harga');
             $table->timestamps();
         });
     }

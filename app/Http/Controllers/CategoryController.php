@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Illuminate\Support\Facades\File;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CategoryController extends Controller
 {
@@ -25,7 +26,7 @@ public function create()
         $request->validate([
             'nama' => 'required',
             'course' => 'required',
-            'harga' => 'required|numeric',
+            'harga' => 'required',
         ]);
 
         Category:: create ($request->all());
@@ -33,24 +34,6 @@ public function create()
         return redirect()->route('category.index')->with('success', 'Data Category berhasil ditambahkan');
     }
 
-    // public function edit($id)
-    // {
-    //     $category = Category::table('category')->where('id', '=', $id)->get();
-    //     return view('category.edit', ['category' => $category]);
-    // }
-
-    // public function update(Request $request)
-    // {
-    //     Category::table('category')
-    //         ->where('id', $request->id)
-    //         ->update([
-    //             'id' => $request->id,
-    //             'nama' => $request->nama,
-    //             'course' => $request->course,
-    //             'harga' => $request->harga
-    //         ]);
-    //         return redirect()->route('category.index')->with('success', 'Data Category berhasil diubah');
-    //     }
     public function edit($id)
     {
         $category = Category::findOrFail($id);
@@ -81,5 +64,11 @@ public function create()
         $Category->delete();
 
         return redirect()->route('category.index')->with('success', 'Data Category berhasil dihapus');
+    }
+    public function cetakPDF()
+    {
+        $categories = Category::all();
+        $pdf = Pdf::loadView('category.category-cetak', compact('categories'));
+        return $pdf->download('categories.pdf');
     }
 }

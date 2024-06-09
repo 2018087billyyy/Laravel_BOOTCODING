@@ -78,7 +78,7 @@
             </div>
             <div class="user-box">
               <label for="harga">Harga</label>
-              <input type="number" name="harga" id="harga" required />
+              <input type="text" name="harga" id="harga" required />
             </div>
             <button name="simpan" type="submit">Kirim</button>
           </form>
